@@ -1,0 +1,71 @@
+/* css = cascading style sheets */
+
+/* target the element directly */
+/* every h1 will be effected */
+h1 {
+  color: red;
+  background-color: bisque;
+  font-size: 64px;
+}
+
+/* here h1 is selector, 
+   color is property and red is its value,
+   font-size is property and 64px is its value
+
+   !similar with other property value items
+ */
+
+/* block vs inline
+   1. block elements: starts on a new line, take full width, ex: div,section, p, h1
+
+   2. inline: stays in the same line, takes only needed width, ex: span, a, strong, em
+
+   css behaves differently for block vs inline elements.
+
+
+   how css cascades: if two styles apply to the same element then-
+      - the more specific rule wins
+      - if equally specific, the one written later wins 
+ */
+
+/* class selector: selects element using the class attribute */
+
+.pg {
+  font-size: 22px;
+  color: white;
+  background-color: blue;
+}
+
+/* id selector: selects one specific element using id */
+#hd {
+  color: brown;
+  font-size: 28px;
+}
+
+/* universal selector(*): selects every element on page, often used in resets */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* descanded selector: selects nested element */
+div p .mh {
+  color: blueviolet;
+}
+
+/* attribute selector */
+#uname[placeholder="enter your name"] {
+  color: rgb(128, 255, 0);
+  font-size: 23px;
+}
+#uname::placeholder {
+  color: rgb(128, 255, 0);
+  font-size: 24px;
+}
+
+/* some pseudo element selector: styles the part of an element */
+.pg::first-letter {
+  font-size: 76px;
+  color: gold;
+}
