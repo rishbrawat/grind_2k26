@@ -1,0 +1,175 @@
+<!-- 
+
+   FORM
+   __________
+
+
+   a form is a HTML container that collects user input and sends it to the server for processing.
+
+   * two critical elements of form
+   ____________________________________
+
+      1. action="server-endpoint" - the url where form data is submitted
+      2. method="get/post" - how data is transmitted
+         a. get - appends data to url as query paramters
+         b. post - sends data in html body (used for almost all real forms)
+
+ 
+-->
+
+<!-- 
+ 
+
+   INPUT
+   ________________
+   
+   <input> element is a multi-functional control that accepts user data in various formats, its behavior is primarly influenced by the type attribute and enriched through attributes for validation,accesibility, and UI enhancements.
+
+   <lable> pair form fields with lables
+
+   CORE INPUT TYPES
+   ___________________
+
+   1. Textutal
+
+      text- free form text -> no built-in validation
+      password- masked text -> input obscured visually
+      email- RFC-5322 email format -> browser checks @ and domain like structure
+      url- web addresses -> validates URL syntax
+      search- search field -> searching purpose
+      tel- telephone -> no strict validation, optimized keyboard in mobile
+   
+   2. Numeric and Range
+
+      number - numeric input -> can enforce min max step
+      range - slider widget -> returns numeric value, stylized via css only
+
+   3. Date and Time
+
+      date - yyyy-mm-dd -> returns date only
+      datetime-local - local date + time -> no timezone
+      time - hh::mm: or hh::mm::ss ->returns time only
+      month - yyyy::mm
+      week - yyyy::w## -> returns ISO week number 
+
+   4. Field and media
+
+      file - file upload -> use accept to filter file types
+      image 
+
+   5. Binary/Choice
+      
+      checkbox - boolean or multiselect
+      radio - execlusive selection with name group, all radios with same name forms a group
+   
+   
+   6. Buttons
+
+      button - no default action
+      submit - submits the form
+      reset - restores default values
+
+
+
+   UNIVERSAL ATTRIBUTES
+   _______________________
+
+   1.Constraints and validation
+
+   required - form can not submit without value
+   pattern="[A-Za-z]{3}" - regex pattern enforcement
+   min, max - boundaries for numeric, date, time inputs
+   step - increment unit
+   maxlength, minlength - length constraints on text
+
+   2. Behavior and appearance
+   placeholder="example" - hint inside field
+   readonly- user can copy the value but cant change it
+   disable - no interaction
+   autocomplete="on/off" - suggests previously entered values
+   autofocus - places the cursor on input field on page load
+   multiple - allows multiple entries for email, file, etc
+   accept="image/* ,.pdf" - file type filter for uploads
+   inputmode - suggest virtual keyboard layout
+
+
+   **
+   if there is no "name" for an input data, it wont be included in submitted form data
+   for attribute connects a <label> to a specific form control using the control's id, it looks for an element whose id matches its value.
+   value attr is used for setting a default value to the input
+   name = key
+   value = data
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form and input</title>
+  </head>
+  <body>
+    <form action="/submit" method="post">
+      <!-- a simple input -->
+      <label for="fname">Full Name: </label>
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        placeholder="enter fullname"
+        required
+      />
+
+      <!-- email input -->
+      <label for="email_id">Enter your email: </label>
+      <input
+        type="email"
+        id="email_id"
+        name="email_id"
+        placeholder="email"
+        required
+      />
+
+      <!-- submit button -->
+      <button type="submit>">Submit</button>
+
+      <!-- submit button using input -->
+      <input type="submit" required />
+
+      <!-- radio and checkbox  -->
+      <label> <input type="radio" name="color" value="red" /> Red </label>
+      <label> <input type="radio" name="color" value="blue" /> Blue </label>
+
+      <label>
+        <input type="checkbox" name="subscribe" value="yes" /> Subscribe
+      </label>
+
+      <!-- selection menu -->
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="">Choose</option>
+        <option value="in">India</option>
+        <option value="us">United States</option>
+        <option value="uk">United Kingdom</option>
+      </select>
+    </form>
+
+    <!-- fieldset and grouping -->
+    <form action="/submit" method="get">
+      <fieldset>
+        <legend>Account information</legend>
+
+        <label
+          >Username
+          <input type="text" name="username" />
+        </label>
+
+        <label
+          >Password
+          <input type="password" name="password" />
+        </label>
+      </fieldset>
+    </form>
+  </body>
+</html>
