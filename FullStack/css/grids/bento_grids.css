@@ -1,0 +1,30 @@
+
+
+.item {
+   background-color: rgb(0, 119, 255);
+   color: white;
+}
+
+.grid-container {
+   border: 2px solid black;
+   display: grid;
+   grid-auto-columns: 200px;
+   /* if we set it to auto, the box will scale according to the text size */
+   grid-auto-rows: 200px;
+   gap: 1em;
+   
+
+   /* every area must be rectangle! what is that */
+   grid-template-areas:
+      "box1 box2 box2 box3"
+      "box1 box4 box5 box5"
+      ;
+
+      /* to break the area owner ship we must introduce a new name to the owned space */
+}
+
+.box1 { grid-area: box1; }
+.box2 { grid-area: box2; }
+.box3 { grid-area: box3; }
+.box4 { grid-area: box4; }
+.box5 { grid-area: box5; }

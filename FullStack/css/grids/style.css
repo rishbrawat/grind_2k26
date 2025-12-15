@@ -1,0 +1,62 @@
+.item {
+   padding: 2em;
+   background: linear-gradient(-76deg,rgb(177, 0, 0), rgb(0, 65, 85));
+   color: white;
+   border-radius: 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center ;
+
+}
+
+
+/* grid; is a two-dimensional grid-based layout system. */
+
+.grid-container {
+   border: 3px solid;
+   display: grid;
+
+   /* define column size in the container, we creating 3 columns here. to make our grid items responsive we can use 'fr' or fraction unit */
+   grid-template-columns: 3fr 1fr 1.5fr;
+
+   /* same goes for the rows */
+   grid-template-rows: 2fr 1fr 1.5fr;
+
+   gap: 1em;
+
+
+   /* vertical and horizontal alignment, these works native to the item grid properties*/
+
+   /* along the main axis */
+   /* justify-items: center; */
+
+   /* along the cross axis
+   align-items: center;
+
+   /* these work relative to the container */
+   /* works on columns */
+   /* justify-content: center; */
+   
+   /* works on rows */
+   /* align-content: center;  */
+
+
+   /* implicit rows and columns: if there are new rows and columns, for ex. from search we get new rows and columns, we can define their size by default */
+   grid-auto-rows: 1.5fr;
+   /* grid-auto-columns: 10fr; */
+
+   /* set auto flow */
+   grid-auto-flow: row;
+}
+
+
+/* basic SIDEBAR */
+
+.side-bar-container {
+   border: 5px solid;
+   margin-top: 1em;
+   display: grid;
+   grid-template-columns: 2fr 5fr;
+   gap: .1em;
+   grid-template-rows: 100vh;
+}
