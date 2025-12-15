@@ -41,8 +41,7 @@ int main() {
    int element = 5;
    int boundary = removeElement(arr, size, element);
 
-
-   for(int i = 0; i < size; ++i) {
+   for(int i = 0; i < boundary; ++i) {
       cout << arr[i] << ' ';
    }
 
