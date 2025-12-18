@@ -1,108 +1,65 @@
-/* 
-      Hashing is a technique to convert a key into an index of an array using a hash function so that data can be accessed quickly.      key ──> hash function ──> index ──> stored in hash table
-
-      ex. we want to store numbers 0-99 in an array
-         hash(key) = num % 10
-
-      - key components:
-         1. hash table: an array that stores our data
-         2. hash function: convert key to array index
-         3: collision handling: what to do when two key maps to same index
-
-         the map is actually a array of buckets
-         the bucket contains just one element
-         if two keys hash the same index value, they form a linked list in that bucket
-
-
-      key is passed to a hash function
-      hash function converts the key into an index
-      value is stored in the array
-
-      index = hash(key) % total elements in the array
-*/ 
-
-
 /*
-   unordered_map: is a hash table associative container, which stores key-value pairs.
-      used for fast-lookups, insertion, deletion at O(1) tc.
-      no ordering of the elements
 
+   unordered_map is an associatvive container, that stores the data in a key - value pairs with unique keys, the data in the table is unsorted and it uses separate chaining method(lists).
+   avg : O(1) for insert, search, erase.
+ 
+   also does rehashing if max_load_factor (a) > 1 (O(1): amortized)
 
-      basic syntax
-      unordered_map<key_type, value_type>name;
+   the data is stored in a unsorted manner, for sorted data <map> is used which uses red-black tree.
+
+   When NOT to Use unordered_map
+
+    Need sorted order
+    Small constraints (use array)
+    Very tight memory
+    Key range is small & fixed
 
 
 
 */
 
-// include the library
 #include<unordered_map>
 #include<iostream>
 #include<string>
 using namespace std;
 
-
 int main() {
-   unordered_map<int, string> students;
+   // declare the map, keytype = string, valtype = int
+   unordered_map<string, int> mp;
+   // create a key "rishabh" if it does not exist and assign it a value of 25
+   mp["rishabh"] = 25;
 
-   // create and insert elements
-   students[0] = "alice";
-   students[1] = "john";
+   // insert method takes key value pairs inside the brackets {}, will insert only if the key does not exist, will ignore if key exists
+   mp.insert({"john", 20});
 
-   // method 2, insert(): insert only if key does not exist, does not overwrite existing value.  its more safer than direct access map[index], returns a bool true if the value is inserted and false if not.
-   students.insert({3, "charles"});
-
-   // method 3, faster
-   students.emplace(4, "david");
-
-   // access elements, at() throws exception if the key is not present.
-   auto firstStudent = students.at(0);
-   cout << "first student in the map: " << firstStudent;
-
-
-   // checking if a key exist, returns an iterator to element if found, safe for checking existence
-   if(students.find(3) != students.end()) {
-      cout << "\nkey found";
+   // find() searches for a key, returns an iterator if found, otherwise returns mp.end()
+   auto itr = mp.find("rishabh");
+   // correct usage
+   if(mp.find("rishabh") != mp.end()) {
+      cout << "key exists" << endl;
    }
 
-   // returs 0 or 1
-   if(students.count(3)) {
-      cout << "\nkey exists";
+   // count method for finding the existence of a key, returns 1 if found 0 if not
+   if(mp.count("rishabh")) {
+      cout << "key exists!" << endl;
    }
 
-   // remove a single key
-   students.erase(1);
-
-   // remove all
-   // students.clear()
-
-   // size and empty check
-   int size = students.size();
-   cout << "\nsize of the student map: " << size;
-
-   // check if map is empty or not
-   cout << "\n" << students.empty();
-
+   // update the existing key
+   mp["john"] = 15;
+   mp["sonia"] = 12;
+   mp["ramesh"] = 17;
    // iterate the map
-   for(auto &p: students) {
-      cout << p.first << " : " << p.second << endl; 
+
+   for(auto& p: mp) {
+      cout << p.first << " " << p.second << '\n';
+   }
+   // erase method: erases a key and value, takes key as param
+
+   cout << endl;
+   mp.erase("ramesh");
+   for(auto& p: mp) {
+      cout << p.first << " " << p.second << '\n';
    }
 
-   // How many buckets (slots) does the map currently have?
-    cout << "Total Buckets: " << students.bucket_count() << endl;
-
-    // Which bucket is key 3 sitting in?
-    cout << "Key 3 is in bucket index: " << students.bucket(3) << endl;
-    
-    // How many elements are crowded in that specific bucket?
-    // (If this is > 1, a collision happened!)
-    cout << "Elements in bucket " << students.bucket(3) << ": " 
-         << students.bucket_size(students.bucket(3)) << endl;
-
-   // Only works in C++20 and above
-    // Much cleaner than find() != end()
-   //  if (students.contains(3)) {
-   //      cout << "Key found using contains!";
-   //  }
    return 0;
-}  
+}
