@@ -71,3 +71,44 @@ function goodbye() {
 greetUser('rishbh', goodbye);
 
 
+/*
+Arrow functions are a shorter syntax for writing functions in JavaScript.
+They are commonly used for cleaner, more readable code, especially with
+callbacks and functional programming patterns.
+*/
+
+/*
+BASIC SYNTAX:
+(parameters) => expression
+If there is only ONE expression, it is returned implicitly.
+*/
+const add = (a, b) => a + b;
+
+/*
+EXPLICIT RETURN:
+If you use curly braces {}, you MUST use the `return` keyword.
+*/
+const multiply = (a, b) => {
+  return a * b;
+};
+
+/*
+SINGLE PARAMETER:
+Parentheses can be omitted if there is only one parameter.
+*/
+const square = x => x * x;
+
+/*
+NO PARAMETERS:
+Parentheses are required if there are no parameters.
+*/
+const greet = () => "Hello, world!";
+
+/*
+MULTI-LINE FUNCTION BODY:
+Useful for more complex logic.
+*/
+const calculateArea = (width, height) => {
+  const area = width * height;
+  return area;
+};
