@@ -222,6 +222,25 @@ bool hasCycle(struct Node* head) {
 }
 
 
+// simple bubble-sort for singly linked list (swaps node data)
+Node* sortList(struct Node* head) {
+   if(head == nullptr || head->next == nullptr) return head;
+   bool swapped;
+   do {
+      swapped = false;
+      Node* p = head;
+      while(p->next != nullptr) {
+         if(p->data > p->next->data) {
+            swap(p->data, p->next->data);
+            swapped = true;
+         }
+         p = p->next;
+      }
+   } while(swapped);
+   return head;
+}
+
+
 
 int main() {
    // create a node and allocate it memory using `new`
@@ -250,12 +269,16 @@ int main() {
    traverseList(item1);
 
    cout << endl;
+   // simple sort : sort the list and print
+   item1 = sortList(item1);
+   traverseList(item1);
+
+   cout << endl;
    // reverse the list and print
    item1 = reverseList(item1);
    traverseList(item1);
 
    cout << endl;
-   // create a temporary cycle for demo: connect tail->next to head
    Node* tail = item1;
    while(tail->next != nullptr) tail = tail->next;
    tail->next = item1; // create cycle
