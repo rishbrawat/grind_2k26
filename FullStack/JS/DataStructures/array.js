@@ -142,3 +142,5 @@ console.log(arr6);
 let cart = [10, 20, 30, 40];
 let cartSum = cart.reduce((tsum, price) => tsum+price, 0);
 console.log(cartSum);
+
+// flat() removes nesting from the arrays
