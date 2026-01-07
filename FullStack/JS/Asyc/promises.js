@@ -13,5 +13,5 @@ const myPromise =  new Promise((resolve, reject) => {
     }
 });
 
-myPromise.then(succeeded => console.log(`we have ${succeeded}`)).catch(failed => console.log(`we have ${failed}`));
+myPromise.then(succeeded => console.log(`we have ${succeeded}`)).catch(failed => console.log(`we have ${failed}`)).finally(`we could not get any reports!`);
 
