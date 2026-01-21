@@ -6,6 +6,12 @@
         mid : iterates through the array
         high : tracks where next 2 should go
 
+
+    mid pointer will iterate through each element in the array
+    if the element mid is 0, we swap arr[mid] and arr[low]
+    if its 2 then swap arr's mid and high
+    if 1 dont swap anything just increament mid by 1
+
 */
 #include<vector>
 #include<iostream>
