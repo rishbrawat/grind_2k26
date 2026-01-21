@@ -9,14 +9,21 @@ using namespace std;
 */
 
 int factorial(int n) {
-    if(n == 0 || n == 1) {
+    if(n <= 1) {
         return 1;
     }
-    else {
-        return (n * factorial(n-1));
-    }
+    return (n * factorial(n-1));
 }
 
+
+// tail recursion: is a special type of recursion where the recusive call is the last thing the function does.
+
+int tailFact(int n, int accumulator = 1) {
+    if(n <= 1) {return accumulator;}
+    return tailFact(n - 1, n * accumulator);
+}
+
+
 int main() {
-    cout << factorial(5);
+    cout << factorial(5) << ' ' << tailFact(5);
 }
