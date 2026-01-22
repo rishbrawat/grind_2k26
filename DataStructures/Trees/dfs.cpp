@@ -15,6 +15,7 @@ struct Node {
 };
 
 // preOrder: visit the root first, then visit all left child and then visit all right child
+// data flows from top to bottom as the node is processed first and then its child are processed
 void preOrderIterative(Node* root, vector<char>& result) {
     if(root == nullptr) return;
 
@@ -44,6 +45,20 @@ void preOrderRecursive(Node* root, vector<char>& result) {
     preOrderRecursive(root->right, result);
 }
 
+
+// post order traversal: left->right->root
+// process a node after its children are processed
+// here the information flows from bottom to top, so also called bottom-up traversal
+// ex- height of the tree, diameter of the tree, sizeof subtree, is tree balanced, mix path sum
+
+void postOrderRecurisve(Node* root, vector<char>& result) {
+    if(!root) return;
+
+    // process the left child first
+    postOrderRecurisve(root->left, result);
+    postOrderRecurisve(root->right, result);
+    result.push_back(root->data);
+}
 
 int main() {
     Node* root = new Node('a');
