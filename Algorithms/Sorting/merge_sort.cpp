@@ -27,11 +27,14 @@ void merge(vector<int>& nums, int left, int right, int mid) {
     while(i<n1 && j<n2) {
         if(L[i] <= R[j]) {
             nums[k++] = L[i++];
+
+            cout << nums[k] << ' ';
         }
         else {
             nums[k++] = R[j++];
         }
     }
+    
 
     while(i < n1) {
         nums[k++] = L[i++];
