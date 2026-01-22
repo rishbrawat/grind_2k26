@@ -60,6 +60,16 @@ void postOrderRecurisve(Node* root, vector<char>& result) {
     result.push_back(root->data);
 }
 
+// inorder traversal: left->root->right
+// useful for bst
+// it produces sorted output
+void inOrderRecursive(Node* root, vector<char>& result) {
+    if(!root) return;
+    postOrderRecurisve(root->left, result);
+    result.push_back(root->data);
+    postOrderRecurisve(root->right, result);
+}
+
 int main() {
     Node* root = new Node('a');
     Node* node2 = new Node('b');
